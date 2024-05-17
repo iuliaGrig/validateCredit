@@ -2,3 +2,8 @@
     text-align: center;
     background-image: url(validateCredit/abstract-background-6m6cjbifu3zpfv84.jpeg);
 }
+
+label {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+}
