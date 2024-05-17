@@ -64,7 +64,63 @@ let validateCred = arr => {
   }
 } 
 
+let findInvalidCards = nestedArr => {
+  // Array to store invalid cards:
+  let invalidCards = [];
 
+  // Loop thru nested arrays:
+  for (let i = 0; i < nestedArr.length; i++) {
+
+      // Validate card numbers:
+      let result = validateCred(nestedArr[i]);
+      // console.log("The array is: " + result);
+      // If result is 'invalid':
+      if (result === 'Invalid') {
+        invalidCards.push(nestedArr[i]);
+      }
+    }
+  return invalidCards;
+}
+
+
+// Invalid card numbers inside the batch:
+console.log(findInvalidCards(batch));
+
+let idInvalidCardCompanies = invalidArr => {
+  let company = []
+  for (let i = 0; i < invalidArr.length; i++) {
+    let firstDigit = invalidArr[i][0];
+
+    // Find case for firstDigit:
+    switch(firstDigit) {
+      case 3:
+        if (!company.includes("Amex (American Express)")) {
+          company.push("Amex (American Express)")
+        }
+        break;
+      case 4:
+        if (!company.includes("Visa")) {
+          company.push("Visa");
+        }
+        break;
+      case 5:
+        if (!company.includes("Mastercard")) {
+          company.push("Mastercard");
+        }
+        break;
+      case 6:
+        if (!company.includes("Discover")) {
+          company.push("Discover");
+        }
+        break;
+      default:
+        console.log("Company not found");
+    }
+  }
+  return company;
+}
+
+console.log(idInvalidCardCompanies(batch));
 
 
 
